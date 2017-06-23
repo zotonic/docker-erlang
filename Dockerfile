@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-ENV OTP_VERSION 19.3
+ENV OTP_VERSION 20.0
 
 RUN apk add --no-cache ncurses \
     && apk add --virtual build-deps --no-cache build-base ncurses-dev openssl-dev perl \
