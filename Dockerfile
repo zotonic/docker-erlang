@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.12.1
 
 ENV OTP_VERSION 21.3
 
@@ -13,3 +13,7 @@ RUN apk add --no-cache ncurses \
     && cd .. \
     && rm -r otp_src_${OTP_VERSION}* \
     && apk del build-deps
+
+# Fix for untrusted keys https://gitlab.alpinelinux.org/alpine/aports/-/issues/14043
+RUN apk upgrade
+RUN apk add -X https://dl-cdn.alpinelinux.org/alpine/v3.16/main -u alpine-keys
